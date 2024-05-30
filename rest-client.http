@@ -1,0 +1,92 @@
+GET http://localhost:3000
+### get all song
+GET http://localhost:3000/songs
+### get pagination
+GET http://localhost:3000/songs?page=2&limit=3
+### FIND A SONG BY ID
+GET http://localhost:3000/songs/1
+
+### post a song
+POST http://localhost:3000/songs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBoYXBuZ3V5ZW5AZ21haWwuY29tIiwidXNlcklkIjo1LCJhcnRpc3RJZCI6MywiaWF0IjoxNzE3MDM1NjQyLCJleHAiOjE3MTcxMjIwNDJ9.y2MCtgWR4tNH1hU0Dd47VSde7vMjx2vPrYZcv_J-Huo
+Content-Type: application/json
+
+{
+  "title": "lasting lover",
+  "artists": [1,2],
+  "releasedDate": "2022-09-29",
+  "duration": "02:34",
+  "lyrics": "Lyrice for the song "
+}
+
+### edit a song
+PUT http://localhost:3000/songs/2
+Content-Type: application/json
+
+{
+  "title": "lasting lover",
+  "artists": ["phap nguyen","Daniel"],
+  "releasedDate": "2022-09-29",
+  "duration": "02:34",
+  "lyrics": "Lyrice for the song "
+}
+
+### delete a song
+DELETE http://localhost:3000/songs/1
+
+### post playlist
+POST http://localhost:3000/playlists
+Content-Type: application/json
+
+{
+  "name": "sing a song",
+  "songs": [6],
+  "user" :1
+}
+
+### post a user / auth / signup
+POST http://localhost:3000/auth/signup 
+Content-Type:  application/json
+
+{
+"firstname": "john",
+"lastname": "doe",
+"email": "phapnguyen@gmail.com",
+"password": "phap1234"
+}
+
+###  post a user / auth / login
+POST http://localhost:3000/auth/login
+Content-Type:  application/json
+
+{
+  "email": "phapnguyen@gmail.com",
+  "password": "phap1234"
+}
+
+### 
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBoYXBuZ3V5ZW5AZ21haWwuY29tIiwidXNlcklkIjo1LCJhcnRpc3RJZCI6MywiaWF0IjoxNzE3MDU2NjA3LCJleHAiOjE3MTcxNDMwMDd9.-046c3ArlQJUm8rVW9s5dMp89P9fb6GUbKc5XgwMn2w
+### enable - 2fa
+POST http://localhost:3000/auth/enable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBoYXBuZ3V5ZW5AZ21haWwuY29tIiwidXNlcklkIjo1LCJhcnRpc3RJZCI6MywiaWF0IjoxNzE3MDU2NjA3LCJleHAiOjE3MTcxNDMwMDd9.-046c3ArlQJUm8rVW9s5dMp89P9fb6GUbKc5XgwMn2w
+
+### disabled - 2fa
+GET http://localhost:3000/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBoYXBuZ3V5ZW5AZ21haWwuY29tIiwidXNlcklkIjo1LCJhcnRpc3RJZCI6MywiaWF0IjoxNzE3MDU2NjA3LCJleHAiOjE3MTcxNDMwMDd9.-046c3ArlQJUm8rVW9s5dMp89P9fb6GUbKc5XgwMn2w
+
+### validate 2FA token
+POST http://localhost:3000/auth/validate-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBoYXBuZ3V5ZW5AZ21haWwuY29tIiwidXNlcklkIjo1LCJhcnRpc3RJZCI6MywiaWF0IjoxNzE3MDU2NjA3LCJleHAiOjE3MTcxNDMwMDd9.-046c3ArlQJUm8rVW9s5dMp89P9fb6GUbKc5XgwMn2w
+Content-Type:  application/json
+
+{
+  "token": "503002"
+}
+
+### get profile user with api
+GET http://localhost:3000/auth/profile
+Authorization: Bearer 71688a90-f77c-4d77-9590-3f605b90e5fc
+
+### TEST ENV VARIABLES 
+GET http://localhost:3000/auth/test
