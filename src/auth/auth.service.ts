@@ -94,8 +94,6 @@ export class AuthService {
   }
 
   getEnvVariables() {
-    return {
-      port: this.configService.get<number>('port'),
-    };
+    return this.configService.get('dbUsername');
   }
 }

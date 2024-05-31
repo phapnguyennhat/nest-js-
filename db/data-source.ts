@@ -11,31 +11,20 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   useFactory: async (
     configService: ConfigService,
   ): Promise<TypeOrmModuleOptions> => {
-    return {
-      type: 'postgres',
-      host: configService.get<string>('dbHost'),
-      port: configService.get<number>('dbPort'),
-      username: configService.get<string>('username'),
-      database: configService.get<string>('dbName'),
-      password: configService.get<string>('password'),
-      entities: ['dist/**/*.entity.js'],
-      synchronize: true,
-      migrations: ['dist/db/migrations/*.js'],
-    };
+    return dataSourceOptions(configService);
   },
 };
 
-export const dataSourceOptions: DataSourceOptions = {
+export const dataSourceOptions = (
+  configService: ConfigService,
+): DataSourceOptions => ({
   type: 'postgres',
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT),
-  username: process.env.USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: configService.get<string>('dbHost'),
+  port: parseInt(configService.get<string>('dbPort')),
+  username: configService.get('dbUsername'),
+  password: configService.get('password'),
+  database: configService.get('dbName'),
   entities: ['dist/**/*.entity.js'],
   synchronize: false,
   migrations: ['dist/db/migrations/*.js'],
-};
-
-const dataSource = new DataSource(dataSourceOptions);
-export default dataSource;
+});

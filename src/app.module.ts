@@ -35,26 +35,13 @@ const proConfig = {
 
 @Module({
   imports: [
-    SongsModule,
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        type: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        username: 'postgres',
-        password: 'phap123',
-        database: 'postgres',
-        entities: ['dist/**/*.entity.js'],
-        synchronize: false,
-      }),
-      inject: [ConfigService],
-    }),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.development.env', '.production.env'],
       load: [configuration],
     }),
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    SongsModule,
     PlaylistsModule,
     AuthModule,
     UsersModule,
