@@ -13,6 +13,7 @@ import {
 export class Song {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   title: string;
   // @Column('varchar', { array: true })

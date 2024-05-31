@@ -25,6 +25,7 @@ import { ArtistsModule } from './artists/artists.module';
 import { SeedModule } from './seed/seed.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from 'config/configuration';
+import { validate } from 'env.validation';
 
 const devConfig = {
   port: 3000,
@@ -39,6 +40,7 @@ const proConfig = {
       isGlobal: true,
       envFilePath: ['.development.env', '.production.env'],
       load: [configuration],
+      validate: validate,
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     SongsModule,

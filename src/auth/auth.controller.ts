@@ -11,17 +11,30 @@ import { JwtAuthGuard } from 'src/jwt/jwt.guard';
 import { ValidateTokenDTO } from 'src/DTO/validate-token.dto';
 import { get } from 'http';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('auth')
+@ApiTags('Auth')
 export class AuthController {
   constructor(
     private userService: UsersService,
     private authService: AuthService,
   ) {}
+  @ApiOperation({ summary: 'Register new user' })
+  @ApiResponse({
+    status: 201,
+    description: 'it will return the user in the response',
+  })
   @Post('signup')
   async signup(@Body() userDTO: CreateUserDTO): Promise<User> {
     return this.userService.create(userDTO);
   }
+
+  @ApiOperation({ summary: 'login user' })
+  @ApiResponse({
+    status: 200,
+    description: 'it will give you the access_token in the response',
+  })
   @Post('login')
   async login(@Body() loginDTO: LoginDTO) {
     return this.authService.login(loginDTO);

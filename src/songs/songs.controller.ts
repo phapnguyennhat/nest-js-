@@ -23,11 +23,10 @@ import { Connection } from 'src/common/constant/connection';
 import { UpdateSongDTO } from '../DTO/update-song-dto';
 import { UpdateResult } from 'typeorm';
 import { JwtArtistGuard } from 'src/artists/jwt-artist.guard';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller({
-  path: 'songs',
-  scope: Scope.REQUEST,
-})
+@Controller('song')
+@ApiTags('Song')
 export class SongsController {
   constructor(private songsService: SongsService) {}
   @Get()
