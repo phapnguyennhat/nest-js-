@@ -8,6 +8,7 @@ import { Playlist } from 'src/playlists/playlists.entity';
 import { Song } from 'src/songs/song.entity';
 import { User } from 'src/users/user.entity';
 import { DataSource, DataSourceOptions } from 'typeorm';
+require('dotenv').config();
 
 export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
@@ -30,5 +31,5 @@ export const dataSourceOptions = (
   database: configService.get('dbName'),
   entities: [User, Playlist, Artist, Song],
   synchronize: true,
-  migrations: ['dist/db/migrations/*.js'],
+  migrations: ['dist/db/migration/*.js'],
 });
