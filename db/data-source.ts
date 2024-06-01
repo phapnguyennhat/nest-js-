@@ -33,6 +33,4 @@ export const dataSourceOptions = (): DataSourceOptions => ({
   migrations: ['dist/db/migrations/*.js'],
 });
 
-console.log('env username', process.env.DB_USERNAME);
-
 export const AppDataSource = new DataSource(dataSourceOptions());

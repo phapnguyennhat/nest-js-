@@ -37,7 +37,7 @@ const proConfig = {
 @Module({
   imports: [
     ConfigModule.forRoot({
-      // envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
+      envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
       isGlobal: true,
       load: [configuration],
       validate: validate,
@@ -67,10 +67,12 @@ const proConfig = {
   ],
 })
 export class AppModule implements NestModule {
-  constructor(private dataSource: DataSource) {
-    console.log(dataSource.driver.database);
+  constructor() {
+    console.log('env node', process.env.NODE_ENV);
+    console.log('env username', process.env.DB_USERNAME);
+    console.log('env password', process.env.PASSWORD);
+    console.log('host', process.env.DB_HOST);
   }
-
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes(SongsController);
     // consumer
