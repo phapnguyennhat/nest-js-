@@ -37,7 +37,10 @@ const proConfig = {
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
+      envFilePath: [
+        `${process.cwd()}/.env.${process.env.NODE_ENV}`,
+        `${process.cwd()}/.env`, // Default environment file
+      ],
       isGlobal: true,
       load: [configuration],
       validate: validate,
