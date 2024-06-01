@@ -29,6 +29,6 @@ export const dataSourceOptions = (
   password: configService.get('password'),
   database: configService.get('dbName'),
   entities: [User, Playlist, Artist, Song],
-  synchronize: false,
+  synchronize: true,
   migrations: ['dist/db/migrations/*.js'],
 });
