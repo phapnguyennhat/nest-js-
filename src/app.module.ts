@@ -37,11 +37,12 @@ const proConfig = {
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
       isGlobal: true,
-      envFilePath: ['.development.env', '.production.env'],
       load: [configuration],
       validate: validate,
     }),
+
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     SongsModule,
     PlaylistsModule,
