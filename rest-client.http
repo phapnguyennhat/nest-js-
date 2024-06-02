@@ -2,7 +2,7 @@ GET http://localhost:3000
 ### get all song
 GET http://localhost:3000/songs
 ### get pagination
-GET http://localhost:3000/songs?page=2&limit=3
+GET http://localhost:3000/songs?page=1&limit=3
 ### FIND A SONG BY ID
 GET http://localhost:3000/songs/1
 

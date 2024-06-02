@@ -72,6 +72,7 @@ export class AppModule implements NestModule {
     console.log('env username', process.env.DB_USERNAME);
     console.log('env password', process.env.PASSWORD);
     console.log('host', process.env.DB_HOST);
+    console.log(process.env);
   }
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes(SongsController);

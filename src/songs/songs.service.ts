@@ -18,7 +18,7 @@ export class SongsService {
     @InjectRepository(Artist)
     private artistRepository: Repository<Artist>,
   ) {}
-  private readonly songs = [];
+  // private readonly songs = [];
   //insert
   async create(songDTO: CreateSongDTO): Promise<Song> {
     const song = new Song();

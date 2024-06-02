@@ -25,7 +25,7 @@ import { UpdateResult } from 'typeorm';
 import { JwtArtistGuard } from 'src/artists/jwt-artist.guard';
 import { ApiTags } from '@nestjs/swagger';
 
-@Controller('song')
+@Controller('songs')
 @ApiTags('Song')
 export class SongsController {
   constructor(private songsService: SongsService) {}

@@ -18,6 +18,7 @@ class EnviromentVariables {
   @IsString()
   DB_HOST: string;
 
+  @IsString()
   DB_USERNAME: string;
 
   @IsString()
