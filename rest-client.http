@@ -8,7 +8,7 @@ GET http://localhost:3000/songs/1
 
 ### post a song
 POST http://localhost:3000/songs
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBoYXBuZ3V5ZW5AZ21haWwuY29tIiwidXNlcklkIjo1LCJhcnRpc3RJZCI6MywiaWF0IjoxNzE3MDM1NjQyLCJleHAiOjE3MTcxMjIwNDJ9.y2MCtgWR4tNH1hU0Dd47VSde7vMjx2vPrYZcv_J-Huo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBoYXBuZ3V5ZW5AZ21haWwuY29tIiwidXNlcklkIjoxLCJhcnRpc3RJZCI6MSwiaWF0IjoxNzE3NDE0NjEwLCJleHAiOjE3MTc1MDEwMTB9.41SU5uZ1ukdoxAnti7exUGz3XrS88QjD4APsI_ZmkVc
 Content-Type: application/json
 
 {
@@ -49,10 +49,10 @@ POST http://localhost:3000/auth/signup
 Content-Type:  application/json
 
 {
-"firstname": "john",
-"lastname": "doe",
-"email": "phapnguyen@gmail.com",
-"password": "phap1234"
+  "firstname": "john",
+  "lastname": "doe",
+  "email": "phapnguyn@gmail.com",
+  "password": "phap1234"
 }
 
 ###  post a user / auth / login

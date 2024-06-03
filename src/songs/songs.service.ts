@@ -7,7 +7,7 @@ import { Song } from './song.entity';
 import { Repository, UpdateResult, DataSource } from 'typeorm';
 import { CreateSongDTO } from '../DTO/create-song-dto';
 import { UpdateSongDTO } from '../DTO/update-song-dto';
-import { Artist } from 'src/artists/artist.entity';
+import { Artist } from '../artists/artist.entity';
 
 @Injectable()
 export class SongsService {

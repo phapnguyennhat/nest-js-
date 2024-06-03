@@ -1,4 +1,4 @@
-import { User } from 'src/users/user.entity';
+import { User } from '../users/user.entity';
 import { CreateSongDTO } from '../DTO/create-song-dto';
 import { SongsService } from './songs.service';
 import { Song } from './song.entity';
@@ -19,11 +19,11 @@ import {
   Scope,
   UseGuards,
 } from '@nestjs/common';
-import { Connection } from 'src/common/constant/connection';
+import { Connection } from '../common/constant/connection';
 import { UpdateSongDTO } from '../DTO/update-song-dto';
 import { UpdateResult } from 'typeorm';
-import { JwtArtistGuard } from 'src/artists/jwt-artist.guard';
-import { ApiTags } from '@nestjs/swagger';
+import { JwtArtistGuard } from '../artists/jwt-artist.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @Controller('songs')
 @ApiTags('Song')
@@ -67,6 +67,7 @@ export class SongsController {
   }
   @Post()
   @UseGuards(JwtArtistGuard)
+  @ApiBearerAuth('JWT-auth')
   create(@Body() createSongDTO: CreateSongDTO, @Req() request) {
     console.log(request.user);
     return this.songsService.create(createSongDTO);

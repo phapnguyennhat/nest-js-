@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Exclude } from 'class-transformer';
-import { Playlist } from 'src/playlists/playlists.entity';
+import { Playlist } from '../playlists/playlists.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { PrimaryGeneratedColumn } from 'typeorm';
 

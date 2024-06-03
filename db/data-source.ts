@@ -17,22 +17,32 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   useFactory: async (
     configService: ConfigService,
   ): Promise<TypeOrmModuleOptions> => {
-    return dataSourceOptions(configService);
+    return {
+      type: 'postgres',
+      host: configService.get<string>('dbHost'),
+      port: parseInt(configService.get<string>('dbPort')),
+      username: configService.get<string>('dbUsername'),
+      password: configService.get<string>('password'),
+      entities: ['dist/**/*.entity.js'], // note: run with webpack will be error
+      synchronize: false,
+      migrations: ['dist/db/migrations/*.js'],
+    };
   },
 };
 
-export const dataSourceOptions = (
-  configService: ConfigService,
-): DataSourceOptions => ({
+export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  host: configService.get<string>('dbHost'),
-  port: parseInt(configService.get<string>('dbPort')),
-  username: configService.get<string>('dbUsername'),
-  password: configService.get<string>('password'),
-  database: configService.get<string>('dbName'),
-  entities: [User, Playlist, Artist, Song],
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  database: process.env.DB_NAME,
+  entities: ['dist/**/*.entity.js'],
+  // entities: [Song, User, Playlist, Artist],
   synchronize: false,
-  migrations: ['dist/db/migration/*.js'],
-});
+  migrations: ['dist/db/migrations/*.js'],
+};
 
-// export const AppDataSource = new DataSource(dataSourceOptions());
+const dataSource = new DataSource(dataSourceOptions);
+
+export default dataSource;
