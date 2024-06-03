@@ -23,8 +23,10 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       port: parseInt(configService.get<string>('dbPort')),
       username: configService.get<string>('dbUsername'),
       password: configService.get<string>('password'),
-      entities: ['dist/**/*.entity.js'], // note: run with webpack will be error
-      synchronize: false,
+      // entities: ['dist/**/*.entity.js'], // note: run with webpack will be error
+      entities: [Song, User, Playlist, Artist],
+
+      synchronize: true,
       migrations: ['dist/db/migrations/*.js'],
     };
   },
@@ -39,10 +41,12 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.DB_NAME,
   // entities: ['dist/**/*.entity.js'],
   entities: [Song, User, Playlist, Artist],
-  synchronize: false,
+  synchronize: true,
   migrations: ['dist/db/migrations/*.js'],
 };
 
 const dataSource = new DataSource(dataSourceOptions);
+
+console.log(process.env.DB_HOST);
 
 export default dataSource;
